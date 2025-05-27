@@ -1,23 +1,39 @@
----------- MACHINE À CAFÉ AUTOMATISÉE ------------
+#  AUTOMATED COFFEE MACHINE (CLI)
 
-## Description
-Ce projet constiste à une machine à café automatisée avec des fonctionnalités de payment intégré.
-Les clients peuvent choisir parmi plusieurs types de café et effectuer un paiment sécurisé avant de recevoir leur boisson.
-	- Payer la boisson (`Pay´)
-	- Choisir la boisson entre : expresso, cappuccino, chocolat chaud
-	- Recevoir la boisson via la logique métier `getCoffee´
+##  Description
 
-Le système gère également les erreurs : 
-	- paiement insuffisant,
-	- boisson indisponible,
-	- choix invalide.
+This project simulates an **automated coffee vending machine** with built-in payment functionality, running as a **Node.js CLI application**.
 
-## Requirement
-Pour exécuter ce projet :
-	- Télécharger Node.js [https://nodejs.org]
-	- Node.js V20
+Users can:
+-  Make a payment (`Pay`)
+-  Select a drink: **Espresso**, **Cappuccino**, or **Hot Chocolate**
+-  Receive the drink through the core business logic (`getCoffee`)
 
-## Lancement
-	- Cloner le projet [https://github.com/Astna17/prog-5-d5]
-	- cd prog-5-d5
-	- node index.js
+The system also handles key errors:
+-  Insufficient payment
+-  Out-of-stock drinks
+-  Invalid choice
+
+---
+
+##  Requirements
+
+To run this project, make sure you have the following:
+
+- [Node.js](https://nodejs.org) (version **20.x.x** recommended)
+- A terminal interface (Linux, macOS, or Windows CLI)
+- Git (optional, for cloning the repository)
+
+---
+
+##  Launch Instructions
+
+```bash
+# 1. Clone the project
+git clone https://github.com/Astna17/prog-5-d5.git
+
+# 2. Enter the project directory
+cd prog-5-d5
+
+# 3. Run the CLI application
+node index.js

@@ -1,57 +1,65 @@
-CONCEPTION DU SYSTÈME – Machine à Café
+ Coffee Machine – System Design
+1.  MAIN COMPONENTS
+🔹 pay – Payment Module
+Role: Validate and register a payment before allowing coffee selection.
+CLI 
+Input: Payment amount
+Output: Payment status (validated / rejected)
 
+🔹 c2, c3, c4 – Coffee Choices
+c2: Espresso
 
- 1. COMPOSANTS PRINCIPAUX
- pay   - Module de Paiement
+c3: Cappuccino
 
-Rôle : Valider et enregistrer un paiement avant de permettre l'accès au café.
+c4: Hot Chocolate
 
-Technos possibles : simulateur de paiement, ou insertion de pièces.
+🔹 getCoffee() – Business Logic
+Checks if the payment is valid
 
-Entrée : Montant 
+Verifies that the selected drink is in stock
 
-Sortie : État du paiement (validé / refusé)
+Triggers coffee preparation and delivers it to the user
 
-c2, c3, c4 – Choix du café
-c2 : Expresso
+2.  USE CASES
+UC1: Pay for a drink
+Actor: User
+Goal: Insert an amount to unlock access to drinks
 
-c3 : Cappuccino
+UC2: Choose a drink
+Actor: User
+Goal: Select a valid drink option (c2, c3, c4)
 
-c4 : Chocolat chaud
+UC3: Receive the drink
+Actor: User + Machine
+Goal: Get the prepared beverage from the machine
 
-getCoffee() – Business Logic
-Vérifie que le paiement est validé.
+UC4: Handle an error
+Actor: Machine
+Goal: Detect and display any issues (invalid input, insufficient funds)
 
-Vérifie que les stocks sont suffisants.
+3.  HANDLED ERRORS
+EG1	Insufficient payment	"Insufficient amount. Please try again."
+EG2	Out of stock	"This drink is currently unavailable."
+EG3	Invalid choice	"Unknown option. Please try again."
 
-Déclenche la fabrication de la boisson.
+4.  OBJECT MODEL
+ Class: Coffee
+name	String	Name of the drink
+price	Float	Price in euros
+stock	Int	Available quantity
 
+ Class: CoffeeMaker
+drinks	Map<String, Coffee>	List of available coffees
 
- 2. USE CASES 
-UC1 : Payer une boisson -> User
-UC2 : Choissir une boisson -> User
-UC3 : Recevoir la boisson -> Machine/User
-UC4 : Gérer une erreur -> Machine
+Methods:
 
+getCoffee(drinkName: string): string
 
- 3. ERREURS GÉRÉES
-EG1 : Payment insuffisant -- "Montant insuffisant, veulliez réessayer." --
-EG2 : Stock de boisson vide -- "Boisson indisponible actuellement." --
-EG3 : Choix invalide -- "Option non reconnue, Réessayez." --
+displayChoices(): void
 
- 4. Modèle Objet
-    - Classe Coffee:
-        name : String
-        price : float
-        stock : int
+ Class: Payment
+amount	Float	Amount inserted by user
 
-    - CLasse CoffeMaker:
-        drinks : Map<String, Coffee>
-        *Méthode*
-        getCoffee
-        displayChoice
+Method:
 
-    - Class Payment
-        amount : float 
-        *Méthode*
-        isSufficient
+isSufficient(price: float): boolean

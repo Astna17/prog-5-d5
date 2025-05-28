@@ -15,7 +15,7 @@ public class CoffeeMachine {
 
     public void pay(int amount) {
         balance += amount;
-        System.out.println("💰 Paiement reçu : " + amount + " unité(s). Solde actuel : " + balance);
+        System.out.println(" Paiement reçu : " + amount + " unité(s). Solde actuel : " + balance);
     }
 
     public void select(String input) {
@@ -27,7 +27,7 @@ public class CoffeeMachine {
 
         selectedCoffee = type;
         stock.put(type, stock.get(type) - 1); 
-        System.out.println("✅ " + type.getCoffeeName() + " sélectionné.");
+        System.out.println(" " + type.getCoffeeName() + " sélectionné.");
     }
 
     public void dispense() {
@@ -36,7 +36,7 @@ public class CoffeeMachine {
         }
 
         balance -= selectedCoffee.getPrice();
-        System.out.println("☕ Votre " + selectedCoffee.getCoffeeName() + " est prêt !");
+        System.out.println(" Votre " + selectedCoffee.getCoffeeName() + " est prêt !");
         selectedCoffee = null;
     }
 }

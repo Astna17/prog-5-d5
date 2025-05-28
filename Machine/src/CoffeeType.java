@@ -21,4 +21,9 @@ public enum CoffeeType {
     public float getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return coffeeName + "("+ price + "$)";
+    }
 }
